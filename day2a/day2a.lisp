@@ -8,9 +8,12 @@
        while line collect (with-input-from-string (lin line)
                             (loop for number = (read lin nil) while number collect number)))))
 
-(loop for line in (read-input "input")
-   summing (loop for number in line
-              maximizing number into max
-              minimizing number into min
-              finally (return (- max min)))) 
+(defun day2a (input)
+  (loop for line in input
+     summing (loop for number in line
+                maximizing number into max
+                minimizing number into min
+                finally (return (- max min)))))
+
+
 
