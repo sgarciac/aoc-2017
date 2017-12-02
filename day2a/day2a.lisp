@@ -2,5 +2,15 @@
 
 (in-package #:day2a)
 
-;;; "day2a" goes here. Hacks and glory await!
+(defun read-input (file)
+  (with-open-file (in file)
+    (loop for line = (read-line in nil)
+       while line collect (with-input-from-string (lin line)
+                            (loop for number = (read lin nil) while number collect number)))))
+
+(loop for line in (read-input "input")
+   summing (loop for number in line
+              maximizing number into max
+              minimizing number into min
+              finally (return (- max min)))) 
 
