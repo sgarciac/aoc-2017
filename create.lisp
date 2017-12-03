@@ -1,2 +1,4 @@
 (require 'quickproject)
-(quickproject:make-project #p"day2a" :name "day2a" :depends-on '(alexandria) :author "sergio.garcia@gmail.com" :license "artistic license")
+(setf proj "day3b")
+
+(quickproject:make-project proj :name proj :depends-on '(alexandria) :author "sergio.garcia@gmail.com" :license "artistic license")
