@@ -8,10 +8,8 @@
     (loop for line = (read-line in nil)
        while line collect (split-sequence #\Space line))))
 
-
-
 (defun has-duplicates-p (entries)
-  (labels ((helper (list)
+  (labels ((helper (list) ;; obviously not the best way, but for the fun of not using tables
 	     (when (and list (cdr list))
 	       (or (string= (car list) (cadr list))
 		   (has-duplicates-p (cdr list))))))
