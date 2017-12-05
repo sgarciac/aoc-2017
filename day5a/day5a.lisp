@@ -23,16 +23,3 @@
                   (< position (length program)))
        finally (return count))))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
