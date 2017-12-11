@@ -1,5 +1,5 @@
 ;;;; day11a.lisp
-(in-package #:day11a)
+(in-package #:day11b)
 
 (defparameter *deltas*
   '((:N 0 1 -1)
@@ -16,6 +16,7 @@
   (with-open-file (in file)
     (mapcar (lambda (item) (intern (string-upcase item) "KEYWORD")) (cl-ppcre:split "," (read-line in)))))
 
+
 (defun walk(directions &optional (initial-x 0) (initial-y 0) (initial-z 0))
   (loop
      for x = initial-x then (+ (first delta) x)
@@ -23,14 +24,5 @@
      for z = initial-z then (+ (third delta) z)
      for direction in directions
      for delta = (get-delta direction)
-     finally (return (list x y z))))
-
-(defun distance-from-center(directions)
-  (/ (apply #'+ (mapcar #'abs (walk directions))) 2))
-
-
-
-
-
-
-
+     maximizing (/ (apply #'+ (mapcar #'abs (list x y z))) 2) into furthest
+     finally (return furthest)))
