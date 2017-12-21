@@ -31,6 +31,7 @@
        for i = 0 then (1+ i)
        while line collect (parse-particle line i))))
 
-(first (sort (read-input "input") (lambda (p1 p2) (< (abs (sum-abs (particle-acc p1))) (abs (sum-abs (particle-acc p2)))))))
+(defun day20a (input)
+  (first (sort input (lambda (p1 p2) (< (abs (sum-abs (particle-acc p1))) (abs (sum-abs (particle-acc p2))))))))
 		  
 

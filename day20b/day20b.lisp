@@ -1,5 +1,3 @@
-;;;; day20b.lisp
-
 (in-package #:day20b)
 
 (defstruct vals
@@ -32,7 +30,6 @@
       :x (nth 6 items)
       :y (nth 7 items)
       :z (nth 8 items)))))
-
 
 (defun distance (p1 p2)
   (let ((d (+ (abs (- (vals-x (particle-pos p1))
@@ -73,28 +70,22 @@
             (push particle (gethash (particle-pos particle) c))))
     (loop for k being the hash-keys in c using (hash-value v) when (> (length v) 1) collect v)))
 
-
-
-(collision-groups (read-input "input"))
-
-(min-distance (read-input "input"))
-
-
-(loop
-   with particles = (read-input "input")
-   for i from 0 upto 100
-   for mindist = 100000000000000000 then (min-distance particles)
-   and previous-mindist = 100000000000000001 then mindist
-   do (let ((collisions (collision-groups particles)))
-        (format t "~A ~A ~A~%" (length particles) mindist (length collisions))
-        (loop for group in collisions
-           do (loop for particle in group
-                 do (setf particles (remove particle particles))))
-        (loop for particle in particles do (update-particle! particle))
-        (setf pepe particles)
-        ))
-
-(min-distance
- pepe)
+(defun day20b (particles)
+  (loop
+     for i from 0 upto 100
+     for nparticles = (length particles)
+     and previous-nparticles = (length particles) then nparticles
+     for mindist = 100000000000000000 then (min-distance particles)
+     and previous-mindist = 100000000000000001 then mindist
+     ;;while (or (< mindist previous-mindist) (< nparticles previous-nparticles))
+     do (let ((collisions (collision-groups particles)))
+	  (format t "~A ~A ~A ~A~%" (length particles) mindist previous-mindist (length collisions))
+	  (loop for group in collisions
+	     do (loop for particle in group
+		   do (setf particles (remove particle particles))))
+	  (loop for particle in particles do (update-particle! particle))
+	  )
+       finally (return (list (length particles) mindist previous-mindist))))
+(day20b (read-input "input"))
 
 
