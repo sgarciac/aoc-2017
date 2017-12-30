@@ -1,0 +1,38 @@
+set b 93
+set c b
+jnz a 2
+jnz 1 5
+mul b 100
+sub b -100000
+set c b
+sub c -17000
+set f 1
+
+
+set d 2
+e = 2
+  g = (d * e) - b
+    if G = 0
+      F = 0
+    e = e + 1
+    set g = e - b
+  if g != 0 LOOP
+
+
+
+  d = d + 1
+  g = d - b
+
+g !=0 LOOP
+
+
+
+
+jnz f 2
+  sub h -1
+set g b
+sub g c
+jnz g 2 ->
+  jnz 1 3 ->
+    sub b -17
+    jnz 1 -23

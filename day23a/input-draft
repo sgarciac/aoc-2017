@@ -1,0 +1,26 @@
+B = 109300
+C = 126300
+    F = 1
+    D = 2
+      E = 2
+        G = D
+            mul g e
+            sub g b
+            ******* G
+        F = 0
+        E = E + 1
+        G = E
+        sub g b
+        ********* G
+      D = D + 1
+      G = D
+      G = G - B
+      ********** G
+    jnz f 2
+    sub h -1
+    set g b
+    sub g c
+    jnz g 2
+    jnz 1 3
+    sub b -17
+    jnz 1 -23

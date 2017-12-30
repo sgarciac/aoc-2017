@@ -71,9 +71,10 @@
                (return-from execute-program last-received))
              (incf pc))
             (JGZ
-             (if (not (zerop (get-arg-val (inst-arg1 inst) regs)))
+             (if (> (get-arg-val (inst-arg1 inst) regs) 0)
                  (incf pc (get-arg-val (inst-arg2 inst) regs))
                  (incf pc)
-                 ))))))
+                 )
+             )))))
 
 (execute-program (read-input "input"))
